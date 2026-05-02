@@ -1,6 +1,6 @@
 import { Log } from "../logging_middleware/Logging";
 
-const AUTH_TOKEN = "YOUR_TOKEN_HERE";
+const AUTH_TOKEN = process.env.TEST_SERVER_TOKEN;
 
 async function runPriorityInbox() {
     try {

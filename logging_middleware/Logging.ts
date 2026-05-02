@@ -15,7 +15,7 @@ export const Log = async (
     message: string
 ): Promise<void> => {
     const authToken = process.env.TEST_SERVER_TOKEN;
-
+    
     if (!authToken) {
         return;
     }
