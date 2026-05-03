@@ -18,11 +18,14 @@ const RunScheduler = async () => {
         const ReqOptions = {
             method: "GET",
             headers: {
-                "Authorization": `Bearer ${AUTH_TOKEN}`
+                "Authorization": `Bearer ${AUTH_TOKEN}`,
+                "Content-Type": "application/json"
             }
         };
 
-        const DepotsResponse = await fetch("http://20.207.122.201/evaluation-service/depots", ReqOptions);
+        const API_ENDPOINT = process.env.BASE_URL;
+
+        const DepotsResponse = await fetch(`${API_ENDPOINT}/depots`, ReqOptions);
 
         if(!DepotsResponse.ok) {
             throw new Error(`Failed to fetch depots. Response Status: ${DepotsResponse.status}`);

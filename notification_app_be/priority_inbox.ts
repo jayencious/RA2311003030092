@@ -6,8 +6,13 @@ async function runPriorityInbox() {
     try {
         await Log("backend", "info", "repository", "Fetching notifications for priority inbox");
 
-        const response = await fetch("http://20.207.122.201/evaluation-service/notifications", {
-            headers: { "Authorization": `Bearer ${AUTH_TOKEN}` }
+        const API_ENDPOINT = process.env.BASE_URL;
+
+        const response = await fetch(`${API_ENDPOINT}/notifications`, {
+            headers: {
+                "Authorization": `Bearer ${AUTH_TOKEN}`,
+                "Content-Type": "application/json"
+            }
         });
 
         if (!response.ok) throw new Error("Failed to fetch");

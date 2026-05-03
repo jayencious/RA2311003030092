@@ -37,7 +37,9 @@ export const Log = async (
             body: JSON.stringify(payload)
         };
 
-        const ApiResponse = await fetch("http://20.207.122.201/evaluation-service/logs", ReqOptions);
+        const API_ENDPOINT = process.env.BASE_URL;
+
+        const ApiResponse = await fetch(`${API_ENDPOINT}/logs`, ReqOptions);
 
         if(!ApiResponse.ok) {
             const errorBody = await ApiResponse.text();
